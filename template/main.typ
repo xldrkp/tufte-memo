@@ -1,7 +1,7 @@
 #import "@preview/tufte-memo:0.1.2": *
 
 #show: template.with(
-  title: [Tufte inspired Typst template],
+  title: [Tufte inspired Typst template] ,
   shorttitle: [Tufte-Memo Usage Guide],
   subtitle: [The Tufte-Memo Usage guide and background],
   authors: (

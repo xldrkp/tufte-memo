@@ -1,13 +1,13 @@
 [package]
-name = "tufte-memo"
+name = "tufte-memo-deutsch-dgp"
 version = "0.1.2"
 entrypoint = "lib.typ"
-authors = ["Noah Gula"]
+authors = ["Noah Gula", "Axel Dürkop"]
 license = "MIT"
-description = "A memo document template inspired by the design of Edward Tufte's books."
+description = "A memo document template inspired by the design of Edward Tufte's books. Adapted for German i18n and with use of APA and DGP citation style."
 categories = ["report"]
-homepage = "https://github.com/nogula/tufte-memo"
-repository = "https://github.com/nogula/tufte-memo"
+homepage = "https://github.com/xldrkp/tufte-memo"
+repository = "https://github.com/xldrkp/tufte-memo"
 
 [template]
 path = "template"

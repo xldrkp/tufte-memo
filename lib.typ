@@ -264,7 +264,7 @@
   show bibliography: set par(justify:false)
   set bibliography(title:none)
   if bib != none {
-    heading(level:1,[References])
+    heading(level:1,[bibliographie])
     bib
   }
 }
@@ -305,9 +305,9 @@ CAUTION: if no bibliography is defined, then this function will not display anyt
 #let notecite(dy:-2em,supplement:none,key) = context {
   let elems = query(bibliography)
   if elems.len() > 0 {
-    cite(key,supplement:supplement,style:"ieee")
+    cite(key,supplement:supplement,style:"template/dgp.csl")
     note(
-      cite(key,form: "full",style: "template/short_ref.csl"),
+      cite(key,form: "full",style: "template/dgp.csl"),
       dy:dy,numbered:false
     )
   }
