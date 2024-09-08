@@ -43,6 +43,9 @@
   // Document metadata
   set document(title: title, author: authors.map(author => author.name))
 
+  // Set the document language to German
+  set text(lang: "de")
+
   // Just a suttle lightness to decrease the harsh contrast
   set text(fill:luma(30))
 
@@ -54,7 +57,7 @@
   show figure.where(kind: table): set figure.caption(position: top)
   show figure.where(kind: table): set figure(numbering: "I")
   
-  show figure.where(kind: image): set figure(supplement: [Figure], numbering: "1")
+  show figure.where(kind: image): set figure(supplement: [Abbildung], numbering: "1")
   
   show figure.where(kind: raw): set figure.caption(position: top)
   show figure.where(kind: raw): set figure(supplement: [Code], numbering: "1")
@@ -104,7 +107,7 @@
 
   // Page setup
   set page(
-    paper: "us-letter",
+    paper: "a4",
     margin: (
       left: 1in,
       right: 3.5in,
@@ -137,10 +140,10 @@
           linebreak()
         }
         if draft [
-          Draft document, #date.display().
+          Entwurf, #date.display().
         ]
         if distribution != none [
-          Distribution limited to #distribution.
+          Verbreitung beschränkt auf #distribution.
         ]
       } else {
         if type(footer-content) == array {
@@ -151,22 +154,22 @@
           linebreak()
         }
         if draft [
-          Draft document, #date.display().
+          Entwurf, #date.display().
         ]
         if distribution != none [
-          Distribution limited to #distribution.
+          Verbreitung beschränkt auf #distribution.
         ]
         linebreak()
-        [Page #counter(page).display()]
+        [Seite #counter(page).display()]
       }
     })},
-    background: if draft {rotate(45deg,text(font:sans-fonts,size:200pt, fill: rgb("FFEEEE"))[DRAFT])}
+    background: if draft {rotate(45deg,text(font:sans-fonts,size:200pt, fill: rgb("FFEEEE"))[ENTWURF])}
   )
 
   set par(
     // justify: true,
     leading: 0.65em,
-    first-line-indent: 1em
+    first-line-indent: 0em
   )
   show par: set block(
     spacing: 0.65em
@@ -184,6 +187,7 @@
         leading:0.2em,
         first-line-indent: 0pt
       )
+      v(-2em)
       upper(title)
       set text(size: 11pt)
       v(-0.65em)
@@ -231,7 +235,7 @@
   titleblock(title:title, subtitle:subtitle)
   authorblock(authors)
   text(size:11pt,font: sans-fonts,{
-    if date != none {upper(date.display("[month repr:long] [day], [year]"))}
+    if date != none {upper(date.display("[day]. [month repr:long] [year]"))}
     linebreak()
     if document-number != none {document-number}
   })
@@ -264,7 +268,7 @@
   show bibliography: set par(justify:false)
   set bibliography(title:none)
   if bib != none {
-    heading(level:1,[bibliographie])
+    heading(level:1,[Bibliografie])
     bib
   }
 }
@@ -305,9 +309,9 @@ CAUTION: if no bibliography is defined, then this function will not display anyt
 #let notecite(dy:-2em,supplement:none,key) = context {
   let elems = query(bibliography)
   if elems.len() > 0 {
-    cite(key,supplement:supplement,style:"template/dgp.csl")
+    cite(key,supplement:supplement,style:"template/apa.csl")
     note(
-      cite(key,form: "full",style: "template/dgp.csl"),
+      cite(key,form: "prose",style: "apa"),
       dy:dy,numbered:false
     )
   }
